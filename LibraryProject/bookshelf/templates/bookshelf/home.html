@@ -1,0 +1,43 @@
+{% extends "bookshelf/base.html" %}
+{% block content %}
+<div id="home" class="page active">
+  <div class="hero">
+    <h1>Welcome to BookHub</h1>
+    <p>Your digital gateway to thousands of books and resources</p>
+    <a href="{% url 'register' %}" class="btn btn-primary"
+      >Get Started</a
+    >
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <h3>📖 Vast Collection</h3>
+      <p>
+        Access thousands of books across various genres and categories. From
+        classic literature to modern bestsellers.
+      </p>
+    </div>
+    <div class="feature-card">
+      <h3>🔍 Easy Search</h3>
+      <p>
+        Find your favorite books quickly with our advanced search and filtering
+        system.
+      </p>
+    </div>
+    <div class="feature-card">
+      <h3>📱 Mobile Friendly</h3>
+      <p>
+        Read anywhere, anytime. Our platform works seamlessly across all
+        devices.
+      </p>
+    </div>
+    <div class="feature-card">
+      <h3>👥 Community</h3>
+      <p>
+        Connect with other book lovers, share reviews, and discover new
+        recommendations.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
