@@ -10,17 +10,6 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     alert("Please fill in all fields");
     return;
   }
-
-  // For Django integration, you would send this data to your backend
-  alert("Login form submitted! In Django, this would authenticate the user.");
-
-  // Example of what you might do in Django:
-  // fetch('/login/', {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify({email, password})
-  // }).then(response => response.json())
-  //   .then(data => console.log(data));
 });
 
 document
@@ -48,19 +37,6 @@ document
       alert("Password must be at least 6 characters long");
       return;
     }
-
-    // For Django integration, you would send this data to your backend
-    alert(
-      "Registration form submitted! In Django, this would create a new user."
-    );
-
-    // Example of what you might do in Django:
-    // fetch('/register/', {
-    //     method: 'POST',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify({name, email, password})
-    // }).then(response => response.json())
-    //   .then(data => console.log(data));
   });
 
 // Handle browser back/forward buttons
