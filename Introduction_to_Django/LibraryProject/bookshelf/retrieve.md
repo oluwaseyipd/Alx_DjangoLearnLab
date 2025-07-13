@@ -1,3 +1,3 @@
 <!-- Retrieve -->
-Book.objects.all()
+Book.objects.get
 <!-- Output: <QuerySet [<Book: Book object (1)>]> -->
