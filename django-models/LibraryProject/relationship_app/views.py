@@ -6,6 +6,9 @@ from .models import Library
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegisterForm
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+
 
 # 🔹 Function-Based View: List all books
 def list_books(request):
@@ -23,12 +26,13 @@ class LibraryDetailView(DetailView):
 # 🔹 Register View
 def register_view(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')
+            user = form.save()
+            login(request, user)  # This line logs in the user after registration
+            return redirect('home')  # Replace 'home' with your actual homepage URL name
     else:
-        form = RegisterForm()
+        form = UserCreationForm()
     return render(request, 'relationship_app/register.html', {'form': form})
 
 # 🔹 Login View
@@ -47,3 +51,12 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, 'relationship_app/logout.html')
+
+from django.contrib.auth.views import LoginView, LogoutView
+
+class CustomLoginView(LoginView):
+    template_name = 'relationship_app/login.html'
+
+class CustomLogoutView(LogoutView):
+    template_name = 'relationship_app/logout.html'
+
