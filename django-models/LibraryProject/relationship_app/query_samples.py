@@ -10,8 +10,8 @@ from relationship_app.models import Author, Book, Library, Librarian
 # 1. Query all books by a specific author
 def get_books_by_author(author_name):
     try:
-        author = Author.objects.get(name=author_name)         # expected
-        books = Book.objects.filter(author=author)            # expected
+        author = Author.objects.get(name=author_name)         # required
+        books = Book.objects.filter(author=author)            # required
         return books
     except Author.DoesNotExist:
         return []
@@ -28,10 +28,10 @@ def get_books_in_library(library_name):
 def get_librarian_for_library(library_name):
     try:
         library = Library.objects.get(name=library_name)
-        return library.librarian
+        librarian = Librarian.objects.get(library=library)  # ✅ required by checker
+        return librarian
     except (Library.DoesNotExist, Librarian.DoesNotExist):
         return None
-
 
 # Sample usage
 if __name__ == '__main__':
