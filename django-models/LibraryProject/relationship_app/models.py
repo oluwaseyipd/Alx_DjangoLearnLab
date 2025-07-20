@@ -18,7 +18,7 @@ class Book(models.Model):
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
     publication_year = models.PositiveIntegerField()
 

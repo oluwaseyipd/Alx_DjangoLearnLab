@@ -9,9 +9,9 @@ from .views import admin_view, librarian_view, member_view
 
 urlpatterns = [
     path('books/', list_books, name='list_books'),  # function-based view
-    path('books/add/', views.add_book, name='add_book'),
-    path('books/<int:pk>/edit/', views.edit_book, name='edit_book'),
-    path('books/<int:pk>/delete/', views.delete_book, name='delete_book'),
+    path('add_book/', views.add_book, name='add_book'),
+    path('edit_book/<int:pk>/', views.edit_book, name='edit_book'),
+    path('delete_book/<int:pk>/', views.delete_book, name='delete_book'), 
     path('library/<int:pk>/', LibraryDetailView.as_view(), name='library_detail'),  # class-based view
     path('login/', LoginView.as_view(template_name='relationship_app/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='relationship_app/logout.html'), name='logout'),
