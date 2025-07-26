@@ -1,0 +1,12 @@
+{% extends "relationship_app/base.html" %} {% block content %}
+<div>
+<h1>Register</h1>
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <a href="{% url 'register' %}">Register</a>
+</div>
+  {% endblock %}
