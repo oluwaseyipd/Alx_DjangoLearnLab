@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from .models import Book
 from django import forms
+from .forms import ExampleForm 
 
 from django.http import HttpResponse
 
@@ -15,11 +16,14 @@ def book_list(request):
 
 @permission_required('your_app_name.can_create', raise_exception=True)
 def create_book(request):
-    # Example placeholder code for creating a book
     if request.method == "POST":
-        # process form
-        pass
-    return render(request, 'bookshelf/create_book.html')
+        form = ExampleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('book_list')  # Change to your actual URL name
+    else:
+        form = ExampleForm()
+    return render(request, 'bookshelf/create_book.html', {'form': form})
 
 @permission_required('your_app_name.can_edit', raise_exception=True)
 def edit_book(request, book_id):
