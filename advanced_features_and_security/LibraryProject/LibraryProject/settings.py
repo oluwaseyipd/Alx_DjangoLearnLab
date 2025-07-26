@@ -127,3 +127,31 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # My Configurations
 AUTH_USER_MODEL = 'bookshelf.CustomUser'
+
+# --- SECURITY SETTINGS ---
+
+DEBUG = False  # Must be False in production
+ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com']  # Replace with actual domain or server IP
+
+# Browser security headers
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Force HTTPS for cookies (production only)
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# Optional: HSTS (Strict Transport Security)
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+
+INSTALLED_APPS += ['csp']
+
+MIDDLEWARE += ['csp.middleware.CSPMiddleware']
+
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'", "https://trustedscripts.example.com")
+CSP_STYLE_SRC = ("'self'", "https://trustedstyles.example.com")

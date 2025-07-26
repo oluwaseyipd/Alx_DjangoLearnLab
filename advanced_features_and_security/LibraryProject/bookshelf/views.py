@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import permission_required
 from .models import Book
+from django import forms
+
+from django.http import HttpResponse
 
 def home(request):
     return render(request, 'bookshelf/home.html')
@@ -29,3 +32,21 @@ def delete_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     # implement delete logic
     return render(request, 'bookshelf/delete_book.html', {'book': book})
+
+
+
+
+class SearchForm(forms.Form):
+    q = forms.CharField(max_length=100, required=False)
+
+
+def search_books(request):
+    query = request.GET.get("q", "")
+    books = Book.objects.filter(title__icontains=query)  # ORM handles escaping
+    return render(request, "bookshelf/book_list.html", {"books": books})
+
+
+def home(request):
+    response = HttpResponse("Secure Page")
+    response['Content-Security-Policy'] = "default-src 'self'; script-src 'self'; style-src 'self';"
+    return response

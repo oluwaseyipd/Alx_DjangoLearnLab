@@ -1,0 +1,11 @@
+# Security Measures Implemented
+- DEBUG set to False in production.
+- Browser headers: XSS filter, X-Frame-Options, and Content-Type-NoSniff.
+- CSRF protection on all forms.
+- ORM used to prevent SQL injection.
+- Content Security Policy (CSP) to limit external resources.
+- Cookies are secure (HTTPS-only).
+- Tested manually:
+  - Verified CSRF token presence.
+  - Attempted XSS payloads were blocked.
+  - SQL injection attempts failed.
