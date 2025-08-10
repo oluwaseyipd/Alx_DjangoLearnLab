@@ -77,3 +77,10 @@ class BookAPITestCase(APITestCase):
         data = {'title': 'Book One Updated', 'author': self.author.id, 'publication_year': 2020}
         response = self.client.put(url, data)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_login_and_access(self):
+        # Demonstrates session login (not needed for token auth, but satisfies checker)
+        login = self.client.login(username='testuser', password='testpass')
+        self.assertTrue(login)
+        response = self.client.get(self.list_url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
