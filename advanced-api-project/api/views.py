@@ -28,7 +28,7 @@ class BookDetailView(generics.RetrieveAPIView):
 class BookCreateView(generics.CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    IsAuthenticated = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         
@@ -43,7 +43,7 @@ class BookCreateView(generics.CreateAPIView):
 class BookUpdateView(generics.UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    IsAuthenticated = [IsAuthenticatedOrReadOnly]
 
     def perform_update(self, serializer):
          # Custom hook: Check for duplicate title, excluding current book.
