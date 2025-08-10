@@ -109,3 +109,81 @@ This project provides a RESTful API for managing `Book` instances using Django R
 ## Testing
 
 Use tools like Postman or `curl` to
+
+
+## Filtering, Searching, and Ordering in BookListView
+
+### Implementation
+
+The `BookListView` uses Django REST Framework's built-in backends to provide flexible querying:
+
+- **Filtering:**  
+  Enabled via `DjangoFilterBackend` and the `filterset_fields` attribute.  
+  Users can filter books by `title`, `author`, and `publication_year`.
+
+- **Searching:**  
+  Enabled via `SearchFilter` and the `search_fields` attribute.  
+  Users can search for books by `title` or the related author's `name`.
+
+- **Ordering:**  
+  Enabled via `OrderingFilter` and the `ordering_fields` attribute.  
+  Users can order results by `title`, `publication_year`, or `author`.
+
+#### View Configuration Example
+
+```python
+class BookListView(generics.ListAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['title', 'author', 'publication_year']
+    search_fields = ['title', 'author__name']
+    ordering_fields = ['title', 'publication_year', 'author']
+```
+
+---
+
+### Usage Examples
+
+#### Filtering
+
+- Get books published in 2025:
+  ```
+  GET /api/books/?publication_year=2025
+  ```
+- Get books by a specific author (author ID = 3):
+  ```
+  GET /api/books/?author=3
+  ```
+- Get books with a specific title:
+  ```
+  GET /api/books/?title=MyBookTitle
+  ```
+
+#### Searching
+
+- Search for books with "Harry" in the title or author name:
+  ```
+  GET /api/books/?search=Harry
+  ```
+
+#### Ordering
+
+- Order books by title (ascending):
+  ```
+  GET /api/books/?ordering=title
+  ```
+- Order books by publication year (descending):
+  ```
+  GET /api/books/?ordering=-publication_year
+  ```
+
+---
+
+### Summary
+
+- **Filtering:** Use query parameters matching `filterset_fields`.
+- **Searching:** Use the `search` query parameter.
+- **Ordering:** Use the `ordering` query parameter with any field listed in `ordering_fields`.
+
+These features make the API flexible and user-friendly for front-end and API consumers.

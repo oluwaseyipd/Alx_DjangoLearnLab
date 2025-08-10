@@ -8,13 +8,24 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework.exceptions import ValidationError
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
+
+
 # Create your views here.
 
 
 # BookListView: Returns a list of all Book instances.
+# - Filtering: Users can filter by title, author, and publication_year using query parameters.
+# - Searching: Users can search by book title and author name using the 'search' query parameter.
+# - Ordering: Users can order results by title, publication_year, or author using the 'ordering' query parameter.
 class BookListView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['title', 'author', 'publication_year']
+    search_fields = ['title', 'author__name']
+    ordering_fields = ['title', 'publication_year', 'author']
 
 # BookDetailView: Returns details for a single Book instance.
 class BookDetailView(generics.RetrieveAPIView):
