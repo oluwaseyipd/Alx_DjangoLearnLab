@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from PIL import Image
 
 # Create your models here.
 
@@ -8,3 +10,36 @@ class Post(models.Model):
     content = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE) 
+
+class Profile(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    # Extra fields
+    gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female')], blank=True)
+    age = models.PositiveIntegerField(null=True, blank=True)
+    phone_number = models.CharField(max_length=15, blank=True)
+    address = models.CharField(max_length=255, blank=True)
+    bio = models.TextField(blank=True)
+    profile_image = models.ImageField(upload_to='profile_pictures', default='profile_pictures/default.jpg')
+    banner_image = models.ImageField(upload_to='banner_pictures', default='banner_pictures/default.jpeg')
+
+    # Track creation time
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user.username
+    
+    def save(self):
+        super().save()
+
+        # Resize profile image
+        img = Image.open(self.profile_image.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.profile_image.path)
+
+
+

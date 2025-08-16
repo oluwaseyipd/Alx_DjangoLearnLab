@@ -1,0 +1,196 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+{% block title %}My Blog{% endblock %}
+
+{% block content %}
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">WordCraft</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+               {% if user.is_authenticated%}
+                <a href="{% url 'logout' %}" class="btn">Logout</a>
+               {% else %}
+                <a href="{% url 'login' %}" class="btn">Sign In</a>
+                <a href="{% url 'register' %}" class="btn primary">Get Started</a>
+                  {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Share Your Story with the World</h1>
+            <p>Join thousands of writers who trust WordCraft to publish their thoughts, ideas, and stories. Start your blogging journey today and connect with readers who matter.</p>
+            <div class="cta-buttons">          
+                <a href="{% url 'register' %}" class="cta-btn primary">Start Writing</a>
+                <a href="{% url 'feeds' %}" class="cta-btn secondary">Explore Blogs</a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose WordCraft?</h2>
+            <p class="section-subtitle">Everything you need to create, publish, and grow your blog audience in one powerful platform.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✍️</div>
+                    <h3>Intuitive Editor</h3>
+                    <p>Write with our distraction-free editor that formats your content beautifully. Focus on your words while we handle the rest.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful Themes</h3>
+                    <p>Choose from dozens of professionally designed themes that make your blog stand out and reflect your unique style.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Optimized</h3>
+                    <p>Your blog looks perfect on any device. Our responsive designs ensure your readers enjoy your content everywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>SEO Ready</h3>
+                    <p>Built-in SEO tools help your content rank higher in search results and reach more readers organically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Community</h3>
+                    <p>Connect with fellow writers, engage with readers, and build meaningful relationships around your content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics</h3>
+                    <p>Track your blog's performance with detailed analytics. Understand your audience and grow your reach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>50K+</h3>
+                    <p>Active Bloggers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2M+</h3>
+                    <p>Blog Posts Published</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10M+</h3>
+                    <p>Monthly Readers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99.9%</h3>
+                    <p>Uptime Guaranteed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Writers Say</h2>
+            <p class="section-subtitle">Join thousands of satisfied bloggers who've found their voice with WordCraft.</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">WordCraft transformed my writing journey. The editor is so intuitive, and the community is incredibly supportive. I've grown my readership by 300% in just six months!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah Martinez</h4>
+                            <p>Travel Blogger</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">As a tech writer, I need reliable tools and excellent formatting. WordCraft delivers on both fronts. The SEO features have helped my articles rank much higher.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JC</div>
+                        <div class="author-info">
+                            <h4>James Chen</h4>
+                            <p>Tech Writer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I love how easy it is to customize my blog's appearance. The themes are beautiful, and the mobile optimization is flawless. My readers love the experience!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ER</div>
+                        <div class="author-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Lifestyle Blogger</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your Blogging Journey?</h2>
+            <p>Join WordCraft today and discover how easy it is to share your passion with the world.</p>
+            <a href="{% url 'feeds' %}" class="cta-btn primary">Create Your Blog</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>WordCraft</h3>
+                <p>Empowering writers to share their stories with the world. Create, publish, and grow your audience with our powerful blogging platform.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Platform</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Themes</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Writers</a></li>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 WordCraft. All rights reserved. Made with ❤️ for writers everywhere.</p>
+        </div>
+    </footer>
+{% endblock %}

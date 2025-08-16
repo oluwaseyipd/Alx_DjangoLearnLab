@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block title %}My Blog{% endblock %}
+    </title>
+     <link href="{% static 'css/pages_styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+        {% if messages %}
+        {% for message in messages %}
+          <div class="success-message">
+            {{ message }}
+          </div>
+        {% endfor %}
+        {% endif %}
+            <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="{% url 'feeds' %}" class="logo">WordCraft</a>
+            <nav class="header-nav">
+                <a href="#" class="nav-item active">Feed</a>
+                <a href="#" class="nav-item">Following</a>
+                <a href="#" class="nav-item">Bookmarks</a>
+                <a href="#" class="nav-item">My Posts</a>
+            </nav>
+            <div class="user-menu">
+                <a href="#" class="write-btn">Write</a>
+                <a href="{% url 'profile' %}" class="user-avatar">
+                    <img src="{{ user.profile.profile_image.url }}" alt="">
+                </a>
+            </div>
+        </div>
+    </header>
+    {% block content %} {% endblock %}
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+{% extends "blog/pages/pages_base.html" %}
+
+{% load static %}
+{% block title %}Feeds{% endblock %}
+
+{% block content %}
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Feed Section -->
+        <section class="feed-section">
+            <div class="feed-header">
+                <h1 class="feed-title">Your Feed</h1>
+                <p class="feed-subtitle">Discover the latest stories from writers you follow</p>
+                <div class="feed-filters">
+                    <a href="#" class="filter-btn active">All Posts</a>
+                    <a href="#" class="filter-btn">Following</a>
+                    <a href="#" class="filter-btn">Technology</a>
+                    <a href="#" class="filter-btn">Lifestyle</a>
+                    <a href="#" class="filter-btn">Travel</a>
+                </div>
+            </div>
+
+            <div class="blog-posts">
+                <!-- Blog Post 1 -->
+                <article class="blog-post">
+                    <div class="post-header">
+                        <div class="author-avatar">
+                            <img src="{{ user.profile.profile_image.url }}" alt="">
+                        </div>
+                        <div class="post-meta">
+                            <div class="author-name">{{ user.first_name}} {{ user.last_name}}</div>    
+                            <div class="author-username">@{{ user.username }}</div>
+                            <div class="post-date">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h2 class="post-title">
+                            <a href="#">The Hidden Gems of Barcelona: A Local's Guide to the City</a>
+                        </h2>
+                        <p class="post-excerpt">
+                            After living in Barcelona for five years, I've discovered countless spots that tourists never see. From secret rooftop bars to family-run tapas joints tucked away in narrow alleys, this city continues to surprise me every day...
+                        </p>
+                        <div class="post-tags">
+                            <a href="#" class="tag">Travel</a>
+                            <a href="#" class="tag">Barcelona</a>
+                            <a href="#" class="tag">Guide</a>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn" onclick="toggleLike(this)">
+                            <span>❤️</span> <span class="count">42</span>
+                        </button>
+                        <button class="action-btn">
+                            <span>💬</span> <span>18</span>
+                        </button>
+                        <button class="action-btn" onclick="toggleBookmark(this)">
+                            <span>🔖</span> Save
+                        </button>
+                        <button class="action-btn">
+                            <span>🔗</span> Share
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-post">
+                    <div class="post-header">
+                        <div class="author-avatar">JC</div>
+                        <div class="post-meta">
+                            <div class="author-name">James Chen</div>
+                            <div class="post-date">5 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h2 class="post-title">
+                            <a href="#">Understanding Web Performance: Why Every Millisecond Matters</a>
+                        </h2>
+                        <p class="post-excerpt">
+                            In today's digital landscape, web performance isn't just a technical consideration—it's a business imperative. Studies show that a 100ms delay in page load time can reduce conversion rates by up to 7%. Let's dive into the metrics that matter...
+                        </p>
+                        <div class="post-tags">
+                            <a href="#" class="tag">Technology</a>
+                            <a href="#" class="tag">Web Development</a>
+                            <a href="#" class="tag">Performance</a>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn" onclick="toggleLike(this)">
+                            <span>❤️</span> <span class="count">67</span>
+                        </button>
+                        <button class="action-btn">
+                            <span>💬</span> <span>24</span>
+                        </button>
+                        <button class="action-btn" onclick="toggleBookmark(this)">
+                            <span>🔖</span> Save
+                        </button>
+                        <button class="action-btn">
+                            <span>🔗</span> Share
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-post">
+                    <div class="post-header">
+                        <div class="author-avatar">ER</div>
+                        <div class="post-meta">
+                            <div class="author-name">Emily Rodriguez</div>
+                            <div class="post-date">1 day ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h2 class="post-title">
+                            <a href="#">Minimalism in 2025: Beyond Decluttering Your Home</a>
+                        </h2>
+                        <p class="post-excerpt">
+                            Minimalism has evolved far beyond empty rooms and white walls. Today's minimalist lifestyle is about intentional choices, digital wellness, and creating space for what truly matters. Here's how the movement has transformed...
+                        </p>
+                        <div class="post-tags">
+                            <a href="#" class="tag">Lifestyle</a>
+                            <a href="#" class="tag">Minimalism</a>
+                            <a href="#" class="tag">Wellness</a>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn" onclick="toggleLike(this)">
+                            <span>❤️</span> <span class="count">89</span>
+                        </button>
+                        <button class="action-btn">
+                            <span>💬</span> <span>31</span>
+                        </button>
+                        <button class="action-btn" onclick="toggleBookmark(this)">
+                            <span>🔖</span> Save
+                        </button>
+                        <button class="action-btn">
+                            <span>🔗</span> Share
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-post">
+                    <div class="post-header">
+                        <div class="author-avatar">MK</div>
+                        <div class="post-meta">
+                            <div class="author-name">Marcus Kim</div>
+                            <div class="post-date">2 days ago</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h2 class="post-title">
+                            <a href="#">The Art of Coffee: From Bean to Perfect Cup</a>
+                        </h2>
+                        <p class="post-excerpt">
+                            Coffee isn't just a morning ritual—it's a craft that connects us to farmers, roasters, and baristas around the world. Join me on a journey through the complex world of coffee, from understanding terroir to mastering your brewing technique...
+                        </p>
+                        <div class="post-tags">
+                            <a href="#" class="tag">Food & Drink</a>
+                            <a href="#" class="tag">Coffee</a>
+                            <a href="#" class="tag">Culture</a>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn" onclick="toggleLike(this)">
+                            <span>❤️</span> <span class="count">56</span>
+                        </button>
+                        <button class="action-btn">
+                            <span>💬</span> <span>22</span>
+                        </button>
+                        <button class="action-btn" onclick="toggleBookmark(this)">
+                            <span>🔖</span> Save
+                        </button>
+                        <button class="action-btn">
+                            <span>🔗</span> Share
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Trending Posts -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Trending Today</h3>
+                <div class="trending-post">
+                    <div class="trending-number">1</div>
+                    <div class="trending-content">
+                        <h4><a href="#">AI and the Future of Creative Writing</a></h4>
+                        <div class="trending-meta">by Alex Thompson • 2.3k views</div>
+                    </div>
+                </div>
+                <div class="trending-post">
+                    <div class="trending-number">2</div>
+                    <div class="trending-content">
+                        <h4><a href="#">Remote Work: Lessons from 3 Years at Home</a></h4>
+                        <div class="trending-meta">by Lisa Park • 1.8k views</div>
+                    </div>
+                </div>
+                <div class="trending-post">
+                    <div class="trending-number">3</div>
+                    <div class="trending-content">
+                        <h4><a href="#">Sustainable Fashion on a Budget</a></h4>
+                        <div class="trending-meta">by Maya Singh • 1.5k views</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggested Authors -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Writers to Follow</h3>
+                <div class="suggested-author">
+                    <div class="author-avatar">AT</div>
+                    <div class="suggested-info">
+                        <div class="suggested-name">Alex Thompson</div>
+                        <div class="suggested-bio">Tech writer & AI enthusiast</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+                <div class="suggested-author">
+                    <div class="author-avatar">LP</div>
+                    <div class="suggested-info">
+                        <div class="suggested-name">Lisa Park</div>
+                        <div class="suggested-bio">Remote work consultant</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+                <div class="suggested-author">
+                    <div class="author-avatar">MS</div>
+                    <div class="suggested-info">
+                        <div class="suggested-name">Maya Singh</div>
+                        <div class="suggested-bio">Sustainable lifestyle blogger</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+            </div>
+
+            <!-- Popular Topics -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Popular Topics</h3>
+                <div class="tag-cloud">
+                    <a href="#" class="tag">Technology</a>
+                    <a href="#" class="tag">Travel</a>
+                    <a href="#" class="tag">Lifestyle</a>
+                    <a href="#" class="tag">Food</a>
+                    <a href="#" class="tag">Health</a>
+                    <a href="#" class="tag">Design</a>
+                    <a href="#" class="tag">Business</a>
+                    <a href="#" class="tag">Writing</a>
+                    <a href="#" class="tag">Photography</a>
+                    <a href="#" class="tag">Science</a>
+                </div>
+            </div>
+        </aside>
+    </main>
+{% endblock %}
