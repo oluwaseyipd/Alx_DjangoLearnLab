@@ -1,9 +1,15 @@
-{% extends "blog/auth/auth_base.html" %}
-
 {% load static %}
-{% block title %}My Blog{% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block title %}My Blog{% endblock %}
+    </title>
+     <link href="{% static 'css/auth_styles.css' %}" rel="stylesheet" />
+</head>
+<body>
  <div class="auth-container">  
     <div class="auth-header">
         <h1>Welcome Back</h1>
@@ -24,7 +30,9 @@
         </div>
 
  </div>
-
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
 
  <!-- <div class="auth-container">
        <div class="page active" id="loginPage">
@@ -54,5 +62,3 @@
             </div>
         </div>
     </div> -->
-
-{% endblock %}
