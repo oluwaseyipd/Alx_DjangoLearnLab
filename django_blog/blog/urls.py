@@ -10,9 +10,10 @@ urlpatterns = [
 
     # User pages
     #Comment related URLs
-    path('comments/new/', CommentCreateView.as_view(), name='add-comment'),
-    path('comments/<int:comment_id>/delete/', CommentDeleteView.as_view(), name='delete-comment'),
-    path('comments/<int:comment_id>/update/', CommentUpdateView.as_view(), name='update-comment'),
+    path('post/<int:pk>/comments/new/', CommentCreateView.as_view(), name='comment-create'),
+    path('comment/<int:pk>/update/', CommentUpdateView.as_view(), name='comment-update'),
+    path('comment/<int:pk>/delete/', CommentDeleteView.as_view(), name='comment-delete'),
+
 
     # Post-related URLs
     path('posts/', PostListView.as_view(), name='feeds'), 
