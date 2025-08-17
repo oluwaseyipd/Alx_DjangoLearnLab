@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, CommentCreateView, CommentUpdateView, CommentDeleteView, CommentListView, CommentDetailView
 from . import views
 
 
@@ -10,9 +10,9 @@ urlpatterns = [
 
     # User pages
     #Comment related URLs
-    path('post/<int:post_id>/comments/new', views.add_comment, name='add-comment'),
-    path('post/<int:post_id>/comments/<int:comment_id>/delete/', views.delete_comment, name='delete-comment'),
-    path('post/<int:post_id>/comments/<int:comment_id>/update/', views.update_comment, name='update-comment'),
+    path('post/<int:post_id>/comments/new', CommentCreateView.as_view(), name='add-comment'),
+    path('post/<int:post_id>/comments/<int:comment_id>/delete/', CommentDeleteView.as_view(), name='delete-comment'),
+    path('post/<int:post_id>/comments/<int:comment_id>/update/', CommentUpdateView.as_view(), name='update-comment'),
 
     # Post-related URLs
     path('posts/', PostListView.as_view(), name='feeds'), 
