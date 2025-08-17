@@ -27,3 +27,13 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['phone_number', 'gender', 'age', 'address', 'bio', 'profile_image', 'banner_image']
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Write your comment here...'}),
+        }
+        

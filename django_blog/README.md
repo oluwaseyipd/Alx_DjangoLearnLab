@@ -73,3 +73,7 @@ I want this to be added to the readme
 
 Feature Documentation:
 Document the blog post features in a README file or directly in the code as comments. Include details on how to use each feature and any special notes about permissions and data handling.
+
+#
+System Documentation:
+Document the comment system thoroughly, explaining how to add, edit, and delete comments. Include any rules related to comment visibility and user permissions.
