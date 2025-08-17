@@ -8,6 +8,8 @@ from . import views
 
 urlpatterns = [
 
+      path("tags/<str:tag_name>/", views.posts_by_tag, name="posts-by-tag"),
+    path("search/", views.search_posts, name="search"),
     # User pages
     #Comment related URLs
     path('post/<int:pk>/comments/new/', CommentCreateView.as_view(), name='comment-create'),
