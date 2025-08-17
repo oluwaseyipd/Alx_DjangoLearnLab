@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block title %}My Blog{% endblock %}
+    </title>
+     <link href="{% static 'css/auth_styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+ <div class="auth-container">
+       <div id="logoutPage">
+            <div class="logout-container">
+                <div class="logout-icon">👋</div>
+                <div class="logout-message">
+                    <h2>Successfully Logged Out</h2>
+                    <p>Thank you for using our blog platform! Your session has been safely terminated. We hope to see you back soon with more amazing content to share.</p>
+                </div>
+                <button class="btn"><a href="{% url 'login' %}">Sign In Again</a></button>
+            </div>
+        </div>
+</div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

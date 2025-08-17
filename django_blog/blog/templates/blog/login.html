@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block title %}My Blog{% endblock %}
+    </title>
+     <link href="{% static 'css/auth_styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+ <div class="auth-container">  
+    <div class="auth-header">
+        <h1>Welcome Back</h1>
+        <p>Sign in to your account</p>
+    </div>
+
+       <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                  <div class="form-group">
+                     {{ form }}
+                  </div>
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+            <div class="form-links">
+                <p>Don't have an account? <a href="{% url 'register' %}">Create one here</a></p>
+            </div>
+        </div>
+
+ </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+
+ <!-- <div class="auth-container">
+       <div class="page active" id="loginPage">
+            <div class="auth-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to your account</p>
+            </div>
+            <div class="form-container">
+                 <form method="post">
+                {% csrf_token%}
+                <div class="error-message" id="loginError"></div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Username or Email</label>
+                        <input type="text" id="loginEmail" name="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" name="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Sign In</button>
+                </form>
+                <div class="form-links">
+                    <p>Don't have an account? <a href="{% url 'register' %}">Create one here</a></p>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div> -->
