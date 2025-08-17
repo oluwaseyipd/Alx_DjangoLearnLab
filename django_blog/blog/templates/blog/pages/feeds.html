@@ -22,24 +22,24 @@
             </div>
 
             <div class="blog-posts">
-                <!-- Blog Post 1 -->
+                 {% for post in posts %}
                 <article class="blog-post">
                     <div class="post-header">
-                        <div class="author-avatar">
-                            <img src="{{ user.profile.profile_image.url }}" alt="">
+                        <div class="author-avatar">  
+                            <img src="{{ user.author.profile_image.url }}" alt="">
                         </div>
                         <div class="post-meta">
-                            <div class="author-name">{{ user.first_name}} {{ user.last_name}}</div>    
-                            <div class="author-username">@{{ user.username }}</div>
-                            <div class="post-date">2 hours ago</div>
+                            <div class="author-name">{{ post.author.first_name }} {{ post.author.last_name }}</div>    
+                            <div class="author-username">@{{ post.author.username }}</div>
+                            <div class="post-date">{{ post.published_date|date:"F d, Y" }} </div>
                         </div>
                     </div>
                     <div class="post-content">
                         <h2 class="post-title">
-                            <a href="#">The Hidden Gems of Barcelona: A Local's Guide to the City</a>
+                            <a href="{% url 'post-detail' post.id %}"> {{ post.title }}</a>
                         </h2>
                         <p class="post-excerpt">
-                            After living in Barcelona for five years, I've discovered countless spots that tourists never see. From secret rooftop bars to family-run tapas joints tucked away in narrow alleys, this city continues to surprise me every day...
+                           {{ post.content}} 
                         </p>
                         <div class="post-tags">
                             <a href="#" class="tag">Travel</a>
@@ -54,7 +54,7 @@
                         <button class="action-btn">
                             <span>💬</span> <span>18</span>
                         </button>
-                        <button class="action-btn" onclick="toggleBookmark(this)">
+                        <button class=saction-btn" onclick="toggleBookmark(this)">
                             <span>🔖</span> Save
                         </button>
                         <button class="action-btn">
@@ -62,120 +62,7 @@
                         </button>
                     </div>
                 </article>
-
-                <!-- Blog Post 2 -->
-                <article class="blog-post">
-                    <div class="post-header">
-                        <div class="author-avatar">JC</div>
-                        <div class="post-meta">
-                            <div class="author-name">James Chen</div>
-                            <div class="post-date">5 hours ago</div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">
-                            <a href="#">Understanding Web Performance: Why Every Millisecond Matters</a>
-                        </h2>
-                        <p class="post-excerpt">
-                            In today's digital landscape, web performance isn't just a technical consideration—it's a business imperative. Studies show that a 100ms delay in page load time can reduce conversion rates by up to 7%. Let's dive into the metrics that matter...
-                        </p>
-                        <div class="post-tags">
-                            <a href="#" class="tag">Technology</a>
-                            <a href="#" class="tag">Web Development</a>
-                            <a href="#" class="tag">Performance</a>
-                        </div>
-                    </div>
-                    <div class="post-actions">
-                        <button class="action-btn" onclick="toggleLike(this)">
-                            <span>❤️</span> <span class="count">67</span>
-                        </button>
-                        <button class="action-btn">
-                            <span>💬</span> <span>24</span>
-                        </button>
-                        <button class="action-btn" onclick="toggleBookmark(this)">
-                            <span>🔖</span> Save
-                        </button>
-                        <button class="action-btn">
-                            <span>🔗</span> Share
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Blog Post 3 -->
-                <article class="blog-post">
-                    <div class="post-header">
-                        <div class="author-avatar">ER</div>
-                        <div class="post-meta">
-                            <div class="author-name">Emily Rodriguez</div>
-                            <div class="post-date">1 day ago</div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">
-                            <a href="#">Minimalism in 2025: Beyond Decluttering Your Home</a>
-                        </h2>
-                        <p class="post-excerpt">
-                            Minimalism has evolved far beyond empty rooms and white walls. Today's minimalist lifestyle is about intentional choices, digital wellness, and creating space for what truly matters. Here's how the movement has transformed...
-                        </p>
-                        <div class="post-tags">
-                            <a href="#" class="tag">Lifestyle</a>
-                            <a href="#" class="tag">Minimalism</a>
-                            <a href="#" class="tag">Wellness</a>
-                        </div>
-                    </div>
-                    <div class="post-actions">
-                        <button class="action-btn" onclick="toggleLike(this)">
-                            <span>❤️</span> <span class="count">89</span>
-                        </button>
-                        <button class="action-btn">
-                            <span>💬</span> <span>31</span>
-                        </button>
-                        <button class="action-btn" onclick="toggleBookmark(this)">
-                            <span>🔖</span> Save
-                        </button>
-                        <button class="action-btn">
-                            <span>🔗</span> Share
-                        </button>
-                    </div>
-                </article>
-
-                <!-- Blog Post 4 -->
-                <article class="blog-post">
-                    <div class="post-header">
-                        <div class="author-avatar">MK</div>
-                        <div class="post-meta">
-                            <div class="author-name">Marcus Kim</div>
-                            <div class="post-date">2 days ago</div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <h2 class="post-title">
-                            <a href="#">The Art of Coffee: From Bean to Perfect Cup</a>
-                        </h2>
-                        <p class="post-excerpt">
-                            Coffee isn't just a morning ritual—it's a craft that connects us to farmers, roasters, and baristas around the world. Join me on a journey through the complex world of coffee, from understanding terroir to mastering your brewing technique...
-                        </p>
-                        <div class="post-tags">
-                            <a href="#" class="tag">Food & Drink</a>
-                            <a href="#" class="tag">Coffee</a>
-                            <a href="#" class="tag">Culture</a>
-                        </div>
-                    </div>
-                    <div class="post-actions">
-                        <button class="action-btn" onclick="toggleLike(this)">
-                            <span>❤️</span> <span class="count">56</span>
-                        </button>
-                        <button class="action-btn">
-                            <span>💬</span> <span>22</span>
-                        </button>
-                        <button class="action-btn" onclick="toggleBookmark(this)">
-                            <span>🔖</span> Save
-                        </button>
-                        <button class="action-btn">
-                            <span>🔗</span> Share
-                        </button>
-                    </div>
-                </article>
+                {% endfor %}
             </div>
         </section>
 

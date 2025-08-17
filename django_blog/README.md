@@ -65,3 +65,11 @@ This project uses Django's built-in authentication system, extended with custom 
 - Only authenticated users can access feeds and profile pages.
 - Error messages are displayed for invalid form submissions.
 
+
+
+
+#
+I want this to be added to the readme
+
+Feature Documentation:
+Document the blog post features in a README file or directly in the code as comments. Include details on how to use each feature and any special notes about permissions and data handling.

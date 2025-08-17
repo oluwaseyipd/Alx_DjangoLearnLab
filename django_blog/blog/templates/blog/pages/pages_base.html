@@ -22,13 +22,13 @@
         <div class="header-container">
             <a href="{% url 'feeds' %}" class="logo">WordCraft</a>
             <nav class="header-nav">
-                <a href="#" class="nav-item active">Feed</a>
+                <a href="{% url 'feeds' %}" class="nav-item active">Feed</a>
                 <a href="#" class="nav-item">Following</a>
                 <a href="#" class="nav-item">Bookmarks</a>
                 <a href="#" class="nav-item">My Posts</a>
             </nav>
             <div class="user-menu">
-                <a href="#" class="write-btn">Write</a>
+                <a href="{% url 'post-create' %}" class="write-btn">Write</a> 
                 <a href="{% url 'profile' %}" class="user-avatar">
                     <img src="{{ user.profile.profile_image.url }}" alt="">
                 </a>
