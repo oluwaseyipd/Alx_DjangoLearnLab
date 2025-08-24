@@ -2,8 +2,7 @@ from .serializers import PostSerializer, CommentSerializer
 from django.contrib.auth import get_user_model 
 from django.db.models import Q
 from .models import Post, Comment
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets, permissions
 
 
 User = get_user_model()
@@ -46,7 +45,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 class UserFollowingFeedViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = PostSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     ordering = ['-created_at']
 
     def get_queryset(self):
