@@ -5,6 +5,6 @@ urlpatterns = [
     path("register/", RegisterView.as_view(), name="register"),
     path("login/", LoginView.as_view(), name="login"),
     path("profile/", ProfileView.as_view(), name="profile"),
-    path("follow/<str:username>/", FollowUserView.as_view(), name="follow"),
-    path("unfollow/<str:username>/", UnFollowUserView.as_view(), name="unfollow"),
+    path("follow/<int:user_id>/", FollowUserView.as_view(), name="follow"),
+    path("unfollow/<int:user_id>/", UnFollowUserView.as_view(), name="unfollow"),
 ]
