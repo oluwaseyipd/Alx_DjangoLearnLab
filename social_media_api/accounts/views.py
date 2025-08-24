@@ -38,3 +38,29 @@ class ProfileView(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+class FollowUserView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, username):
+        try:
+            user_to_follow = User.objects.get(username=username)
+            if user_to_follow == request.user:
+                return Response({"error": "You cannot follow yourself."}, status=400)
+            request.user.following.add(user_to_follow)
+            return Response({"status": f"You are now following {username}."})
+        except User.DoesNotExist:
+            return Response({"error": "User not found."}, status=404)
+
+class UnFollowUserView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, username):
+        try:
+            user_to_unfollow = User.objects.get(username=username)
+            if user_to_unfollow == request.user:
+                return Response({"error": "You cannot unfollow yourself."}, status=400)
+            request.user.following.remove(user_to_unfollow)
+            return Response({"status": f"You have unfollowed {username}."})
+        except User.DoesNotExist:
+            return Response({"error": "User not found."}, status=404)

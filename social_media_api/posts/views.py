@@ -42,3 +42,16 @@ class CommentViewSet(viewsets.ModelViewSet):
         if author:
             queryset = queryset.filter(author__username=author)
         return queryset
+
+
+class UserFollowingFeedViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    ordering = ['-created_at']
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_authenticated:
+            following_users = user.following.all()
+            return Post.objects.filter(author__in=following_users).order_by('-created_at')
+        return Post.objects.none()
